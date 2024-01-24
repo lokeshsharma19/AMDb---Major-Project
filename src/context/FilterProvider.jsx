@@ -5,10 +5,18 @@ const FilterContext = createContext();
 
 function FilterProvider({ children }) {
   const [searchType, setSearchType] = useState("multi");
+  const [searchTerm, setSearchTerm] = useState("");
   const [resultPage, setResultPage] = useState(1);
   return (
     <FilterContext.Provider
-      value={{ searchType, resultPage, setResultPage, setSearchType }}>
+      value={{
+        searchType,
+        resultPage,
+        setResultPage,
+        setSearchType,
+        searchTerm,
+        setSearchTerm,
+      }}>
       {children}
     </FilterContext.Provider>
   );

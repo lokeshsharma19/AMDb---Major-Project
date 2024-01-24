@@ -12,29 +12,22 @@ import {
   RootLayout,
   SearchPage,
 } from "./pages/index";
-import { loader as searchingLoader } from "./pages/SearchPage";
+import { loader as SingleMovieLoader } from "./pages/SingleMovieDetail";
 import { useFilter } from "./context/FilterProvider";
 
 function App() {
-  const { searchType, resultPage, setResultPage } = useFilter();
+  const { searchType, resultPage, setResultPage, searchTerm, setSearchTerm } =
+    useFilter();
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />} />
+        <Route path="/search/*" element={<SearchPage />} />
         <Route
-          path="/search/*"
-          element={<SearchPage />}
-          loader={(request) => {
-            return searchingLoader({
-              ...request,
-              searchType,
-              resultPage,
-              setResultPage,
-            });
-          }}
+          path="/detail/:id"
+          loader={SingleMovieLoader}
+          element={<SingleMovieDetail />}
         />
-        <Route path="/detail/:id" element={<SingleMovieDetail />} />
-        <Route path="*" element={<ErrorPage />} />
       </Route>
     )
   );

@@ -5,7 +5,6 @@ import { useFilter } from "../context/FilterProvider";
 
 function PageNum({ total_pages: totalPages }) {
   const { resultPage, setResultPage } = useFilter();
-  console.log("hello", resultPage, setResultPage);
   return (
     <div>
       {totalPages && (

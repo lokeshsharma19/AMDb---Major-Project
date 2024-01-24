@@ -1,5 +1,13 @@
+import React from "react";
+import { useRouteError } from "react-router-dom";
+
 function ErrorPage() {
-  return <div>ErrorPage</div>;
+  const errorMsg = useRouteError();
+  return (
+    <div>
+      <p style={{ color: "red" }}>{errorMsg.message}</p>
+    </div>
+  );
 }
 
 export default ErrorPage;

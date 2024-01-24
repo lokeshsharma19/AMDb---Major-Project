@@ -21,7 +21,6 @@ function Trending() {
       } catch (error) {}
     })();
   }, [trendingType, resultPage]);
-  console.log(trendingData);
   return (
     <>
       <TrendingBtn setTrendingType={setTrendingType} />

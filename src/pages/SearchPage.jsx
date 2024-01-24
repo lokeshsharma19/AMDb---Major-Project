@@ -1,40 +1,40 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Filter from "../components/Filter";
 import MovieList from "../components/MovieList";
 import { apiKey } from "../constants";
 import { useLoaderData } from "react-router-dom";
 import SearchForm from "../components/SearchForm";
+import { useFilter } from "../context/FilterProvider";
 
-export async function loader({
-  request,
-  searchType,
-  resultPage,
-  setResultPage,
-}) {
-  const url = new URL(request.url);
-  const searchTerm = url.searchParams.get("search");
-  const endpoint = `https://api.themoviedb.org/3/search/${searchType}?query=${searchTerm}&api_key=${apiKey}&page=${resultPage}`;
-  try {
-    const response = await axios.get(endpoint);
-    return {
-      movieData: response.data,
-      isError: false,
-      error: "",
-    };
-  } catch (error) {
-    return {
-      movieData: null,
-      isError: true,
-      error: error,
-    };
-  }
-}
-
-function SearchPage({ setResultPage, setSearchType }) {
-  const data = useLoaderData();
+function SearchPage() {
+  const [data, setData] = useState({
+    movieData: null,
+    isError: false,
+    error: "",
+  });
+  const { searchType, resultPage, setResultPage, searchTerm } = useFilter();
+  useEffect(() => {
+    setResultPage(1);
+    (async () => {
+      const endpoint = `https://api.themoviedb.org/3/search/${searchType}?query=${searchTerm}&api_key=${apiKey}&page=${resultPage}`;
+      try {
+        const response = await axios.get(endpoint);
+        setData({
+          movieData: response.data,
+          isError: false,
+          error: "",
+        });
+      } catch (error) {
+        setData({
+          movieData: null,
+          isError: true,
+          error: error,
+        });
+      }
+    })();
+  }, [searchTerm]);
   const searchedResults = data.movieData;
-  console.log(searchedResults);
   return (
     <div>
       <SearchForm />
