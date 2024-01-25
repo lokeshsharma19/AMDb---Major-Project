@@ -53,8 +53,7 @@ function SingleMovieDetail() {
           <span className={styles.key}> Genre </span>
           <span className={styles.value}>
             {movieDetail.genres.map((genre) => {
-              console.log(genre);
-              return <>{genre}</>;
+              return <p key={genre.id}>{genre.name}</p>;
             })}
           </span>
         </p>

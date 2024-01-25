@@ -19,6 +19,7 @@ function SearchForm() {
   const handleChange = (value) => {
     setSearchTerm(value);
     navigate(`/search?search=${value}`);
+    setResultPage(1);
   };
 
   const debouncedHandling = debounce(handleChange, 500);

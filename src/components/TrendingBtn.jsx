@@ -12,6 +12,7 @@ export default function ToggleButtons({ setTrendingType }) {
 
   return (
     <ToggleButtonGroup
+      className="container"
       value={alignment}
       exclusive
       onChange={handleAlignment}
