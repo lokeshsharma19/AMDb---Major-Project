@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 :root {
-  --hue: 242;
+  --hue: 220;
   --blue-color: hsl(var(--hue), 64%, 44%);
   --dark-blue-color: hsl(var(--hue), 90%, 35%);
   --white-color: hsl(var(--hue), 64%, 90%);

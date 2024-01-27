@@ -6,7 +6,7 @@ function Home() {
   return (
     <div>
       <SearchForm />
-      <h2>Trending movies</h2>
+      <h2 className="container">Trending movies</h2>
       <Trending />
       <PageNum />
     </div>

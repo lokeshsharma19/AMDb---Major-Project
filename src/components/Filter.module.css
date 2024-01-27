@@ -1,0 +1,11 @@
+.filter {
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.4rem;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  margin: 1rem auto;
+}
+.searchHeading {
+  font-size: 2rem;
+}

@@ -1,0 +1,9 @@
+.actor {
+  margin: 0 0.5rem;
+}
+.photo {
+  max-height: 100px;
+}
+.name {
+  font-size: 0.5rem;
+}

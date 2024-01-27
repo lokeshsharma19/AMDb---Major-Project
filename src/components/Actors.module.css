@@ -1,0 +1,23 @@
+.actorContainer {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding: 20px;
+  margin: 1rem auto;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f0f0f0;
+  width: 90%;
+  max-width: 900px;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #888;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+  }
+}
+.viewMore {
+  font-size: 0.5rem;
+}

@@ -1,11 +1,14 @@
 import React from "react";
 import { useFilter } from "../context/FilterProvider";
+import styles from "./Filter.module.css";
 
 function Filter() {
   const { setSearchType, searchType } = useFilter();
   return (
-    <div>
+    <div className="container">
+      <h2 className={styles.searchHeading}>Search Results</h2>
       <select
+        className={styles.filter}
         name="searchTermType"
         id="searchTermType"
         value={searchType}

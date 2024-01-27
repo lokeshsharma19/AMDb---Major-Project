@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Filter from "../components/Filter";
+import NoSearching from "../components/NoSearching";
 import MovieList from "../components/MovieList";
 import { apiKey } from "../constants";
-import { useLoaderData } from "react-router-dom";
 import SearchForm from "../components/SearchForm";
 import { useFilter } from "../context/FilterProvider";
 import Loading from "../components/Loading";
+import { useLocation } from "react-router-dom";
 
 function SearchPage() {
   const [data, setData] = useState({
@@ -14,14 +15,18 @@ function SearchPage() {
     isError: false,
     error: "",
   });
-  const [searchingPage, setSearchingPage] = useState(1);
+  // const [resultPage, setResultPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [resultData, setResultData] = useState([]);
-  const { searchType, searchTerm } = useFilter();
+  const { searchType, resultPage, setResultPage } = useFilter();
+  const location = useLocation();
+  const url = new URLSearchParams(location.search);
+  const searchParam = url.get("search");
 
   const handleFetching = async (isNewSearch) => {
     setIsLoading(true);
-    const endpoint = `https://api.themoviedb.org/3/search/${searchType}?query=${searchTerm}&api_key=${apiKey}&page=${searchingPage}`;
+    isNewSearch && setResultPage(1);
+    const endpoint = `https://api.themoviedb.org/3/search/${searchType}?query=${searchParam}&api_key=${apiKey}&page=${resultPage}`;
     try {
       const response = await axios.get(endpoint);
       const results = response.data.results;
@@ -33,8 +38,7 @@ function SearchPage() {
       setResultData((prev) => {
         if (isNewSearch) return [...results];
         else {
-          if (prev) return [...prev, ...results];
-          else return [...results];
+          return [...prev, ...results];
         }
       });
       setIsLoading(false);
@@ -50,14 +54,17 @@ function SearchPage() {
   };
 
   useEffect(() => {
-    console.log(" search changing");
     handleFetching(true);
-  }, [searchTerm]);
+  }, [searchParam, searchType]);
 
   useEffect(() => {
-    console.log("changing");
-    handleFetching(false);
-  }, [searchingPage]);
+    if (resultPage > 1) {
+      handleFetching(false);
+    } else {
+      console.log("true wala");
+      handleFetching(true);
+    }
+  }, [resultPage]);
 
   const handleInfiniteScroll = async () => {
     try {
@@ -66,7 +73,7 @@ function SearchPage() {
         document.documentElement.scrollHeight
       ) {
         setIsLoading(true);
-        setSearchingPage((prev) => prev + 1);
+        setResultPage((prev) => prev + 1);
       }
     } catch (error) {
       console.log(error);
@@ -82,13 +89,17 @@ function SearchPage() {
     window.addEventListener("scroll", handleInfiniteScroll);
     return () => window.removeEventListener("scroll", handleInfiniteScroll);
   }, []);
-
-  // const searchedResult = data.movieData;
   return (
     <div>
       <SearchForm />
-      <Filter />
-      {resultData && <MovieList resultData={resultData} />}
+      {searchParam.length !== 0 ? (
+        <>
+          <Filter />
+          <MovieList resultData={resultData} />
+        </>
+      ) : (
+        <NoSearching />
+      )}
       {isLoading && <Loading />}
     </div>
   );

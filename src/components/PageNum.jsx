@@ -6,7 +6,7 @@ import { useFilter } from "../context/FilterProvider";
 function PageNum({ total_pages: totalPages }) {
   const { resultPage, setResultPage } = useFilter();
   return (
-    <div>
+    <div className="container">
       {totalPages && (
         <>
           <Stack spacing={2}>

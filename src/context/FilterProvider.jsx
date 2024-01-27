@@ -7,6 +7,7 @@ function FilterProvider({ children }) {
   const [searchType, setSearchType] = useState("multi");
   const [searchTerm, setSearchTerm] = useState("");
   const [resultPage, setResultPage] = useState(1);
+  const [resultType, setResultType] = useState("day");
   return (
     <FilterContext.Provider
       value={{
@@ -16,6 +17,8 @@ function FilterProvider({ children }) {
         setSearchType,
         searchTerm,
         setSearchTerm,
+        resultType,
+        setResultType,
       }}>
       {children}
     </FilterContext.Provider>

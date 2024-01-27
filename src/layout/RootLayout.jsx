@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, Outlet, useNavigation } from "react-router-dom";
-import LoadingSpinner from "../assets/LoadingSpinner.svg";
 import Loading from "../components/Loading";
 import styles from "./RootLayout.module.css";
+import Heading from "../components/Heading";
 
 function RootLayout() {
   const navigation = useNavigation();
@@ -10,17 +10,12 @@ function RootLayout() {
     <>
       <nav className={` container ${styles.nav}`}>
         <Link to="/">
-          <h2>Movie Search</h2>
+          <Heading />
         </Link>
       </nav>
       <main>
         {navigation.state === "loading" ? (
           <>
-            <img
-              src={LoadingSpinner}
-              alt="Loading"
-              className="loadingSpinner"
-            />
             <Loading />
           </>
         ) : (

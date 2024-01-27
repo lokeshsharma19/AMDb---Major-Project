@@ -1,11 +1,12 @@
 import React from "react";
 import { useRouteError } from "react-router-dom";
 
-function ErrorPage() {
-  const errorMsg = useRouteError();
+function ErrorPage({ success, status_message }) {
+  const errorMsg =
+    status_message?.length > 0 ? status_message : useRouteError();
   return (
     <div>
-      <p style={{ color: "red" }}>{errorMsg.message}</p>
+      <h2 style={{ color: "red", textAlign: "center" }}>{errorMsg}</h2>
     </div>
   );
 }

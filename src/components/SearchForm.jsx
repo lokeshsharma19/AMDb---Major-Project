@@ -1,9 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { createBrowserRouter, useNavigate } from "react-router-dom";
 import { useFilter } from "../context/FilterProvider";
 import styles from "./SearchForm.module.css";
 
 function SearchForm() {
-  const { setResultPage, setSearchTerm, searchTerm } = useFilter();
+  const { setResultPage, resultPage, setSearchTerm } = useFilter();
   const navigate = useNavigate();
 
   const debounce = (func, delay) => {
@@ -19,7 +19,6 @@ function SearchForm() {
   const handleChange = (value) => {
     setSearchTerm(value);
     navigate(`/search?search=${value}`);
-    setResultPage(1);
   };
 
   const debouncedHandling = debounce(handleChange, 500);

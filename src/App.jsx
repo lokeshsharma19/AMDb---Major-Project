@@ -24,7 +24,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/search/*" element={<SearchPage />} />
         <Route
-          path="/detail/:id"
+          path="/detail/:id/:mediaType"
           loader={SingleMovieLoader}
           element={<SingleMovieDetail />}
         />

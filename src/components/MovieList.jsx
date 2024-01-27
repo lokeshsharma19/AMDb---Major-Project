@@ -5,6 +5,7 @@ import Nothing from "./Nothing";
 
 function MovieList({ resultData: results }) {
   if (!results || results.length === 0) return <Nothing />;
+  console.log(results);
   return (
     <>
       <div className={`container ${styles.moviesList}`}>

@@ -9,12 +9,11 @@ import TrendingBtn from "../components/TrendingBtn";
 import PageNum from "./PageNum";
 
 function Trending() {
-  const [trendingType, setTrendingType] = useState("day");
   const [trendingData, setTrendingData] = useState(null);
-  const { resultPage } = useFilter();
+  const { resultPage, setResultType, resultType } = useFilter();
   useEffect(() => {
     setTrendingData(null);
-    const trendingEndpoint = `https://api.themoviedb.org/3/trending/all/${trendingType}?api_key=${apiKey}&page=${resultPage}`;
+    const trendingEndpoint = `https://api.themoviedb.org/3/trending/all/${resultType}?api_key=${apiKey}&page=${resultPage}`;
     (async () => {
       try {
         const response = await axios.get(trendingEndpoint);
@@ -22,11 +21,11 @@ function Trending() {
         window.scrollTo(0, 0);
       } catch (error) {}
     })();
-  }, [trendingType, resultPage]);
-
+  }, [resultType, resultPage]);
+  console.log(trendingData);
   return (
     <>
-      <TrendingBtn setTrendingType={setTrendingType} />
+      <TrendingBtn setResultType={setResultType} />
       {trendingData ? (
         <MovieList resultData={trendingData.results} />
       ) : (

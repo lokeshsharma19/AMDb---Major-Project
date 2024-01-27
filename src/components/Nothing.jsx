@@ -1,7 +1,13 @@
 import React from "react";
 
 function Nothing() {
-  return <div style={{ fontSize: "5rem" }}>Search Someting</div>;
+  return (
+    <div
+      className="container"
+      style={{ fontSize: "2rem", textAlign: "center" }}>
+      <p>There are no movies that matched your query.</p>
+    </div>
+  );
 }
 
 export default Nothing;

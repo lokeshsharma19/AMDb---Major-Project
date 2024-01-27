@@ -15,9 +15,11 @@
     "@mui/material": "^5.15.5",
     "axios": "^1.6.5",
     "lodash": "^4.17.21",
+    "movie-trailer": "^3.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.2",
+    "react-youtube": "^10.1.0",
     "router-dom": "^2.2.11"
   },
   "devDependencies": {

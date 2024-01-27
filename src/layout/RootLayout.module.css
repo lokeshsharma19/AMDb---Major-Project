@@ -1,4 +1,9 @@
 .nav {
+  background-color: #fff;
+  border-radius: 1rem;
+  border: 2px solid var(--dark-blue-color);
+  padding: 1rem;
+
   margin-bottom: 2rem;
 }
 a {
