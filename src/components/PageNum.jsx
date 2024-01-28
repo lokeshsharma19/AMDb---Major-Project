@@ -5,13 +5,16 @@ import { useFilter } from "../context/FilterProvider";
 
 function PageNum({ total_pages: totalPages }) {
   const { resultPage, setResultPage } = useFilter();
+  const getMaxPageLimit = () => {
+    return totalPages > 500 ? 500 : totalPages;
+  };
   return (
     <div className="container">
       {totalPages && (
         <>
           <Stack spacing={2}>
             <Pagination
-              count={totalPages}
+              count={getMaxPageLimit()}
               page={resultPage}
               onChange={(e, value) => {
                 window.scrollTo(0, 0);

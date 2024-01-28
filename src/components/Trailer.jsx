@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import YouTube from "react-youtube";
+import styles from "./Trailer.module.css";
 
 function Trailer({ trailerData, setIsActive }) {
   const [isTrailerPlaying, setIsTrailerPlaying] = useState(true);
   const trailerVideoKey = trailerData.key;
   const opts = {
-    height: "400",
-    width: "560",
+    height: "1000",
+    width: "1400",
     playerVars: {
       disablekb: 1,
       controls: 0,
@@ -15,7 +16,7 @@ function Trailer({ trailerData, setIsActive }) {
     },
   };
   return (
-    <div>
+    <div className={styles.trailer}>
       {isTrailerPlaying ? (
         <YouTube
           videoId={trailerVideoKey}
