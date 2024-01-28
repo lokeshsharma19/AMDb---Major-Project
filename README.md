@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # AMDb---Major-Project
 =======
 # React + Vite
