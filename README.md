@@ -1,4 +1,4 @@
-# [AMDb---Major-Project](https://shimmering-croissant-f16dfa.netlify.app)
+# [AMDb - Movies, tv shows & more](https://shimmering-croissant-f16dfa.netlify.app)
 
 
 ## Description
