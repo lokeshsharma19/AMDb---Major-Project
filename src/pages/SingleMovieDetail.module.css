@@ -1,11 +1,10 @@
 .singleMovieContainer {
   position: relative;
-  /* background-color: black; */
+  color: var(--white-text-color);
 }
 .movieDetail {
-  /* border: 2px solid green; */
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 2fr;
   gap: 1rem;
 }
 .movieDetail h1,
@@ -18,19 +17,16 @@
   width: 300px;
   height: 400px;
   object-fit: fill;
-  /* border: 2px solid green; */
   margin-bottom: 1rem;
   border-radius: 0.3rem;
 }
 
 .infoPara {
-  /* border: 2px solid red; */
   display: flex;
   margin: 1rem 0;
 }
 .key {
   width: 200px;
-  /* border: 2px solid green; */
 }
 .bigInfo {
   margin: 1rem auto;
@@ -48,11 +44,28 @@
   width: 90%;
   max-width: 900px;
 }
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.9
+  ); /* Adjust the alpha channel for transparency */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+}
 .trailerContainer {
   position: absolute;
-  top: -35%;
-  /* width: 100%;  */
-  /* height: 80vh ; */
+  top: 10%;
+  right: 0;
   z-index: -1;
 }
 

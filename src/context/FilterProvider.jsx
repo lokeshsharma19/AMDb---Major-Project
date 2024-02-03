@@ -1,5 +1,4 @@
-import React, { createContext, useContext } from "react";
-import { useState } from "react";
+import React, { createContext, useState, useContext } from "react";
 
 const FilterContext = createContext();
 
@@ -8,6 +7,7 @@ function FilterProvider({ children }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [resultPage, setResultPage] = useState(1);
   const [resultType, setResultType] = useState("day");
+  const [mediaType, setMediaType] = useState("all");
   return (
     <FilterContext.Provider
       value={{
@@ -19,6 +19,8 @@ function FilterProvider({ children }) {
         setSearchTerm,
         resultType,
         setResultType,
+        mediaType,
+        setMediaType,
       }}>
       {children}
     </FilterContext.Provider>

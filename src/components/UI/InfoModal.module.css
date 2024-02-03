@@ -1,0 +1,22 @@
+.modalBackDrop {
+  top: 0;
+  height: 200vh;
+  width: 200vw;
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(50, 50, 50, 0.9);
+}
+.modalContent {
+  background-color: #1a1a1a;
+  color: var(--white-text-color);
+  z-index: 2;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  max-height: 700px;
+  height: 75%;
+  max-width: 500px;
+  width: 70%;
+  overflow-y: auto;
+}

@@ -17,7 +17,7 @@ function NoSearching() {
   const { resultPage } = useFilter();
   useEffect(() => {
     setNoSearchingData(null);
-    const noSearchingEndpoint = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${resultPage}`;
+    const noSearchingEndpoint = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=1`;
     (async () => {
       try {
         const response = await axios.get(noSearchingEndpoint);
@@ -46,14 +46,14 @@ function NoSearching() {
     );
   }
   return (
-    <>
-      <h2 className="container">Popular Searches</h2>
+    <div className="container">
+      <h2 style={{ marginBottom: "1.5rem" }}>Popular Searches</h2>
       {noSearchingData ? (
         <MovieList resultData={noSearchingData.movieData?.results} />
       ) : (
         <Loading />
       )}
-    </>
+    </div>
   );
 }
 

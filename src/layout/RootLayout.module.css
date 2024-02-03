@@ -1,12 +1,11 @@
 .nav {
-  background-color: #fff;
-  border-radius: 1rem;
-  border: 2px solid var(--dark-blue-color);
+  background-color: --dark-background-color;
+  border: 2px solid var(--base-color);
   padding: 1rem;
-
-  margin-bottom: 2rem;
+  margin: 1.5rem 0.5rem;
+  color: var(--white-text-color);
 }
 a {
   text-decoration: none;
-  color: var(--dark-blue-color);
+  color: var(--white-text-color);
 }

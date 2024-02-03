@@ -4,11 +4,11 @@ import styles from "./MovieList.module.css";
 import Nothing from "./Nothing";
 
 function MovieList({ resultData: results }) {
-  if (!results || results.length === 0) return <Nothing />;
   console.log(results);
+  if (!results || results.length === 0) return <Nothing />;
   return (
     <>
-      <div className={`container ${styles.moviesList}`}>
+      <div className={`${styles.moviesList}`}>
         {results &&
           results.map((movie) => {
             return <MovieCard key={movie.id} {...movie} />;

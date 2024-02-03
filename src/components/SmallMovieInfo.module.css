@@ -1,0 +1,52 @@
+.infoOnTop {
+  display: flex;
+}
+
+.smallImg {
+  height: 300px;
+  border-radius: 0.3rem;
+  margin: 1rem;
+}
+.topInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 1rem;
+}
+.topInfoParts {
+  margin: 10px 0;
+}
+.modalBtnsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.modalBtn1 {
+  border: none;
+  outline: none;
+  display: flex;
+  background-color: var(--white-text-color);
+  border-radius: 1rem;
+  padding: 0.5rem 2rem;
+  transition: background 0.5s;
+}
+.modalBtn2 {
+  border: none;
+  outline: none;
+  transition: background 0.5s;
+  border-radius: 50%;
+  width: 30px;
+  height: 35px;
+}
+.modalBtn1:hover,
+.modalBtn2:hover {
+  background-color: var(--light-gray-color);
+}
+.watchlistBtn {
+  height: 25px;
+  margin-top: 2px;
+  width: fit-content;
+}
+
+.infoOnBottom {
+  margin: 1.5rem;
+}

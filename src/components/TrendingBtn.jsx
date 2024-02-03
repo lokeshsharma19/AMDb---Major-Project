@@ -12,7 +12,7 @@ export default function ToggleButtons({ setResultType }) {
   };
 
   return (
-    <div className="container">
+    <div>
       <ToggleButtonGroup
         className={styles.trendingBtn}
         value={alignment}

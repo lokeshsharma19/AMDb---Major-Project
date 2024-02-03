@@ -63,13 +63,15 @@ function SingleMovieDetail() {
   }, []);
   return (
     <div className={styles.singleMovieContainer}>
-      <div className={styles.trailerContainer}>
-        {movieDetail?.videos?.results.length > 0 && (
-          <Trailer
-            setIsActive={setIsActive}
-            trailerData={movieDetail.videos.results[0]}
-          />
-        )}
+      <div className="overlay">
+        <div className={styles.trailerContainer}>
+          {movieDetail?.videos?.results.length > 0 && (
+            <Trailer
+              setIsActive={setIsActive}
+              trailerData={movieDetail.videos.results[0]}
+            />
+          )}
+        </div>
       </div>
       <div
         className={`container ${styles.movieDetail} ${
@@ -92,7 +94,7 @@ function SingleMovieDetail() {
           <p className={styles.infoPara}>
             <span className={styles.key}> Genre </span>
             <span className={styles.value}>
-              {movieDetail.genres.map((genre) => {
+              {movieDetail?.genres?.map((genre) => {
                 return <p key={genre.id}>{genre.name}</p>;
               })}
             </span>
@@ -120,7 +122,11 @@ function SingleMovieDetail() {
             </div>
             <div className={styles.bigInfo}>
               <h3>Country</h3>
-              <p>{movieDetail.production_countries[0]?.name}</p>
+              <p>
+                {movieDetail.production_countries
+                  ? movieDetail.production_countries[0]?.name
+                  : ""}
+              </p>
             </div>
             <h2>More Info</h2>
             <p className={styles.infoPara}>

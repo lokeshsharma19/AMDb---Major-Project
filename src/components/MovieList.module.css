@@ -1,11 +1,16 @@
 .moviesList {
   /* border: 2px solid red; */
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
 
-@media screen and (max-width: 700px) {
+/* @media screen and (max-width: 1300px) {
+  .moviesList {
+    grid-template-columns: repeat(3, 1fr);
+  }
+} */
+@media screen and (max-width: 1000px) {
   .moviesList {
     grid-template-columns: repeat(2, 1fr);
   }

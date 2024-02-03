@@ -26,6 +26,7 @@ function SearchPage() {
   const handleFetching = async (isNewSearch) => {
     setIsLoading(true);
     isNewSearch && setResultPage(1);
+    console.log(resultPage);
     const endpoint = `https://api.themoviedb.org/3/search/${searchType}?query=${searchParam}&api_key=${apiKey}&page=${resultPage}`;
     try {
       const response = await axios.get(endpoint);
@@ -55,13 +56,16 @@ function SearchPage() {
 
   useEffect(() => {
     handleFetching(true);
+    console.log("truewalla jab searchme badla");
   }, [searchParam, searchType]);
 
   useEffect(() => {
     if (resultPage > 1) {
+      console.log("falsewalla");
+
       handleFetching(false);
     } else {
-      console.log("true wala");
+      console.log("true wala ke andar");
       handleFetching(true);
     }
   }, [resultPage]);
@@ -93,10 +97,10 @@ function SearchPage() {
     <div>
       <SearchForm />
       {searchParam.length !== 0 ? (
-        <>
+        <div className="container">
           <Filter />
           <MovieList resultData={resultData} />
-        </>
+        </div>
       ) : (
         <NoSearching />
       )}

@@ -7,13 +7,15 @@ import Loading from "./Loading";
 import { useFilter } from "../context/FilterProvider";
 import TrendingBtn from "../components/TrendingBtn";
 import PageNum from "./PageNum";
+import styles from "./Trending.module.css";
 
 function Trending() {
   const [trendingData, setTrendingData] = useState(null);
-  const { resultPage, setResultType, resultType } = useFilter();
+  const { resultPage, setResultType, resultType, mediaType } = useFilter();
   useEffect(() => {
     setTrendingData(null);
-    const trendingEndpoint = `https://api.themoviedb.org/3/trending/all/${resultType}?api_key=${apiKey}&page=${resultPage}`;
+    const trendingEndpoint = `https://api.themoviedb.org/3/trending/${mediaType}/${resultType}?api_key=${apiKey}&page=${resultPage}`;
+    console.log(trendingEndpoint);
     (async () => {
       try {
         const response = await axios.get(trendingEndpoint);
@@ -21,16 +23,20 @@ function Trending() {
         window.scrollTo(0, 0);
       } catch (error) {}
     })();
-  }, [resultType, resultPage]);
-  console.log(trendingData);
+  }, [resultType, resultPage, mediaType]);
   return (
     <>
-      <TrendingBtn setResultType={setResultType} />
-      {trendingData ? (
-        <MovieList resultData={trendingData.results} />
-      ) : (
-        <Loading />
-      )}
+      <div className={`${styles.topSection}`}>
+        <h2>Trending</h2>
+        <TrendingBtn setResultType={setResultType} />
+      </div>
+      <div>
+        {trendingData ? (
+          <MovieList resultData={trendingData.results} />
+        ) : (
+          <Loading />
+        )}
+      </div>
       <PageNum total_pages={trendingData && trendingData.total_pages} />
     </>
   );

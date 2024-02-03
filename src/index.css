@@ -5,18 +5,18 @@
   box-sizing: border-box;
 }
 :root {
-  --hue: 220;
-  --blue-color: hsl(var(--hue), 64%, 44%);
-  --dark-blue-color: hsl(var(--hue), 90%, 35%);
-  --white-color: hsl(var(--hue), 64%, 90%);
-  --pure-white-color: hsl(var(--hue), 100%, 100%);
-  --black-color: hsl(var(--hue), 64%, 10%);
-  --grey-color: hsl(var(--hue), 24%, 35%);
+  --hue: 211;
+  --base-color: #457b9d;
+  --dark-background-color: hsl(var(--hue), 100%, 3%);
+  --blue-accent-color: hsl(var(--hue), 100%, 20%);
+  --white-text-color: hsl(var(--hue), 5%, 96%);
+  --grey-text-color: hsl(var(--hue), 13%, 17%);
+  --light-gray-color: rgb(142, 141, 141);
 }
 body {
   font-family: "Inter", sans-serif;
-  background-color: var(--white-color);
-  color: var(--black-color);
+  background-color: var(--dark-background-color);
+  color: var(--base-color);
 }
 
 .container {

@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 import YouTube from "react-youtube";
 import styles from "./Trailer.module.css";
+import movieTrailer from "movie-trailer";
+import { useEffect } from "react";
 
 function Trailer({ trailerData, setIsActive }) {
   const [isTrailerPlaying, setIsTrailerPlaying] = useState(true);
   const trailerVideoKey = trailerData.key;
-  const opts = {
-    height: "1000",
-    width: "1400",
-    playerVars: {
-      disablekb: 1,
-      controls: 0,
-      showinfo: 0,
-      autoplay: isTrailerPlaying ? 1 : 0,
-    },
-  };
+  // const opts = {
+  //   height: "700",
+  //   width: "1000",
+  //   playerVars: {
+  //     autoplay: isTrailerPlaying ? 1 : 0,
+  //   },
+  // };
   return (
     <div className={styles.trailer}>
-      {isTrailerPlaying ? (
+      {/* {isTrailerPlaying ? (
         <YouTube
           videoId={trailerVideoKey}
           onPlay={() => {
@@ -33,6 +32,15 @@ function Trailer({ trailerData, setIsActive }) {
         />
       ) : (
         <p>No Trailer Available</p>
+      )} */}
+      {trailerVideoKey && (
+        <iframe
+          width="560"
+          height="315"
+          src={`https://www.youtube.com/embed/${trailerVideoKey}`}
+          title="YouTube Video"
+          frameBorder="0"
+          allowFullScreen></iframe>
       )}
     </div>
   );
