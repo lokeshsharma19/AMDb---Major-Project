@@ -4,7 +4,6 @@ import styles from "./MovieList.module.css";
 import Nothing from "./Nothing";
 
 function MovieList({ resultData: results }) {
-  console.log(results);
   if (!results || results.length === 0) return <Nothing />;
   return (
     <>

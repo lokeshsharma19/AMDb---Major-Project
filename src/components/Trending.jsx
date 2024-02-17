@@ -24,6 +24,7 @@ function Trending() {
       } catch (error) {}
     })();
   }, [resultType, resultPage, mediaType]);
+  console.log(trendingData);
   return (
     <>
       <div className={`${styles.topSection}`}>

@@ -10,6 +10,7 @@ export const loader = async ({ params }) => {
   const imdbId = params.id;
   const mediaType = params.mediaType;
   const endpoint = `https://api.themoviedb.org/3/${mediaType}/${imdbId}?api_key=${apiKey}&append_to_response=videos,credits`;
+  console.log(endpoint);
   try {
     const response = await axios.get(endpoint);
     return { movie: response.data, isError: false, error: "" };
@@ -67,6 +68,7 @@ function SingleMovieDetail() {
         <div className={styles.trailerContainer}>
           {movieDetail?.videos?.results.length > 0 && (
             <Trailer
+              backDrop={movieDetail.backdrop_path}
               setIsActive={setIsActive}
               trailerData={movieDetail.videos.results[0]}
             />
@@ -80,75 +82,110 @@ function SingleMovieDetail() {
         <div className={styles.infoOnLeft}>
           <h2>{movieDetail.title}</h2>
           {movieDetail.adult && <p>Adult - 18+</p>}
-          {!movieDetail.adult && <p>13+</p>}
-          <img
-            className={styles.moviePoster}
-            src={poster}
-            alt={movieDetail.title}
-          />
+          {movieDetail.adult == false && <p>13+</p>}
+          {poster && (
+            <img
+              className={styles.moviePoster}
+              src={poster}
+              alt={movieDetail.title}
+            />
+          )}
+          {movieDetail.release_date && (
+            <p className={styles.infoPara}>
+              <span className={styles.key}>Release Date </span>
+              <span className={styles.value}>{movieDetail.release_date}</span>
+            </p>
+          )}
 
-          <p className={styles.infoPara}>
-            <span className={styles.key}>Release Date </span>
-            <span className={styles.value}>{movieDetail.release_date}</span>
-          </p>
-          <p className={styles.infoPara}>
-            <span className={styles.key}> Genre </span>
-            <span className={styles.value}>
-              {movieDetail?.genres?.map((genre) => {
-                return <p key={genre.id}>{genre.name}</p>;
-              })}
-            </span>
-          </p>
-          <p className={styles.infoPara}>
-            <span className={styles.key}>Runtime </span>
-            <span className={styles.value}> {movieDetail.runtime}</span>
-          </p>
-          <p className={styles.infoPara}>
-            <span className={styles.key}>Language </span>
-            <span className={styles.value}>
-              {movieDetail.original_language}
-            </span>
-          </p>
+          {movieDetail.genres && (
+            <p className={styles.infoPara}>
+              <span className={styles.key}> Genre </span>
+              <span className={styles.value}>
+                {movieDetail?.genres?.map((genre) => {
+                  return <p key={genre.id}>{genre.name}</p>;
+                })}
+              </span>
+            </p>
+          )}
+          {movieDetail.runtime && (
+            <p className={styles.infoPara}>
+              <span className={styles.key}>Runtime </span>
+              <span className={styles.value}> {movieDetail.runtime}</span>
+            </p>
+          )}
+          {movieDetail.original_language && (
+            <p className={styles.infoPara}>
+              <span className={styles.key}>Language </span>
+              <span className={styles.value}>
+                {movieDetail.original_language}
+              </span>
+            </p>
+          )}
         </div>
         <div className={styles.infoOnright}>
           <div className="plot">
-            <div className={styles.bigInfo}>
-              <h3>Plot</h3>
-              <p className={styles.plot}>{movieDetail.overview}</p>
-            </div>
+            {movieDetail.overview && (
+              <div className={styles.bigInfo}>
+                <h3>Plot</h3>
+                <p className={styles.plot}>{movieDetail.overview}</p>
+              </div>
+            )}
+
             <div className={`${styles.actorsContainer} ${styles.bigInfo}`}>
-              <h3>Actors</h3>
-              <Actors actors={movieDetail.credits.cast} />
+              {movieDetail.credits.cast && (
+                <>
+                  <h3>Actors</h3>
+                  <Actors actors={movieDetail.credits.cast} />
+                </>
+              )}
             </div>
             <div className={styles.bigInfo}>
-              <h3>Country</h3>
-              <p>
-                {movieDetail.production_countries
-                  ? movieDetail.production_countries[0]?.name
-                  : ""}
-              </p>
+              {movieDetail.production_countries && (
+                <>
+                  <h3>Country</h3>
+                  <p>
+                    {movieDetail.production_countries
+                      ? movieDetail.production_countries[0]?.name
+                      : ""}
+                  </p>
+                </>
+              )}
             </div>
-            <h2>More Info</h2>
-            <p className={styles.infoPara}>
-              <span className={styles.key}>Movie Runtime </span>
-              <span className={styles.value}>{movieDetail.runtime}</span>
-            </p>
-            <p className={styles.infoPara}>
-              <span className={styles.key}>imdb Rating </span>
-              <span className={styles.value}>{movieDetail.imdbRating}</span>
-            </p>
-            <p className={styles.infoPara}>
-              <span className={styles.key}>imdb Votes </span>
-              <span className={styles.value}>{movieDetail.vote_average}</span>
-            </p>
-            <p className={styles.infoPara}>
-              <span className={styles.key}>Budget </span>
-              <span className={styles.value}>${movieDetail.budget}</span>
-            </p>
-            <p className={styles.infoPara}>
-              <span className={styles.key}>Revenue</span>
-              <span className={styles.value}>${movieDetail.revenue}</span>
-            </p>
+            {movieDetail.runtime &&
+              movieDetail.budget &&
+              movieDetail.imdbRating &&
+              movieDetail.revenue && <h2>More Info</h2>}
+            {movieDetail.runtime && (
+              <p className={styles.infoPara}>
+                <span className={styles.key}>Movie Runtime </span>
+                <span className={styles.value}>{movieDetail.runtime}</span>
+              </p>
+            )}
+            {movieDetail.imdbRating && (
+              <p className={styles.infoPara}>
+                <span className={styles.key}>imdb Rating </span>
+                <span className={styles.value}>{movieDetail.imdbRating}</span>
+              </p>
+            )}
+            {movieDetail.vote_average && (
+              <p className={styles.infoPara}>
+                <span className={styles.key}>imdb Votes </span>
+                <span className={styles.value}>{movieDetail.vote_average}</span>
+              </p>
+            )}
+
+            {movieDetail.budget && (
+              <p className={styles.infoPara}>
+                <span className={styles.key}>Budget </span>
+                <span className={styles.value}>${movieDetail.budget}</span>
+              </p>
+            )}
+            {movieDetail.revenue && (
+              <p className={styles.infoPara}>
+                <span className={styles.key}>Revenue</span>
+                <span className={styles.value}>${movieDetail.revenue}</span>
+              </p>
+            )}
           </div>
         </div>
       </div>

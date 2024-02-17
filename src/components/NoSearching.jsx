@@ -1,9 +1,7 @@
 import React from "react";
 import MovieList from "./MovieList";
 import { useState, useEffect } from "react";
-import TrendingBtn from "../components/TrendingBtn";
 import Loading from "./Loading";
-import { useFilter } from "../context/FilterProvider";
 import { apiKey } from "../constants";
 import axios from "axios";
 import ErrorPage from "../pages/ErrorPage";
@@ -14,7 +12,6 @@ function NoSearching() {
     isError: false,
     errorMsg: "",
   });
-  const { resultPage } = useFilter();
   useEffect(() => {
     setNoSearchingData(null);
     const noSearchingEndpoint = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=1`;

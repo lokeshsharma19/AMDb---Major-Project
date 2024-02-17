@@ -3,9 +3,10 @@ import { useFilter } from "../context/FilterProvider";
 import styles from "./Filter.module.css";
 
 function Filter() {
-  const { setSearchType, searchType, setMediaType } = useFilter();
+  const { setSearchType, mediaType, setMediaType, searchType } = useFilter();
   return (
     <div>
+      <h2 className={styles.searchHeading}>Search Results</h2>
       <select
         className={styles.filter}
         name="searchTermType"
@@ -14,7 +15,6 @@ function Filter() {
         onChange={(e) => {
           setSearchType(e.target.value);
           if (e.target.value !== "multi") {
-            console.log("chal gaya");
             setMediaType(e.target.value);
           }
         }}>

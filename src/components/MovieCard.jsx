@@ -22,7 +22,6 @@ function MovieCard({
 }) {
   const { setMediaType, mediaType } = useFilter();
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
@@ -44,6 +43,8 @@ function MovieCard({
     poster =
       "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.iQs2Y6KaCvvRLfhhULXsrwHaLD%26pid%3DApi&f=1&ipt=77720d684ff9f868dc3ec3a79eac87430c1b297981428b95dde9647b5935ec49&ipo=images";
   }
+
+  //
   const movieDetails = {
     media_type,
     id,
@@ -58,17 +59,21 @@ function MovieCard({
     first_air_date,
     adult,
   };
-  console.log(isModalOpen);
+
+  //
+  //
+
+  console.log(mediaType);
   return (
     <>
       <Link
         className={styles.movieCard}
-        onClick={(e) => {
+        onClick={() => {
           if (media_type) {
             setMediaType(media_type);
           }
         }}
-        to={`/detail/${id}/${mediaType}`}>
+        to={`/detail/${id}/${media_type || mediaType}`}>
         <div className={styles.movieCardTop}>
           <p>{title ? title : name}</p>
           <button

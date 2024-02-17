@@ -14,14 +14,11 @@ import {
   SearchPage,
 } from "./pages/index";
 import { loader as SingleMovieLoader } from "./pages/SingleMovieDetail";
-import { useFilter } from "./context/FilterProvider";
 import TrendingMovies from "./pages/TrendingMovies";
 import TrendingCelebrities from "./pages/TrendingCelebrities";
+import { useFilter } from "./context/FilterProvider";
 
 function App() {
-  const { searchType, resultPage, setResultPage, searchTerm, setSearchTerm } =
-    useFilter();
-
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>

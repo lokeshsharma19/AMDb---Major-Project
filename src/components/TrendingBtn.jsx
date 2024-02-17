@@ -18,7 +18,11 @@ export default function ToggleButtons({ setResultType }) {
         value={alignment}
         exclusive
         onChange={handleAlignment}
-        aria-label="text alignment">
+        aria-label="text alignment"
+        sx={{
+          borderRadius: "2rem",
+          border: "2px solid #457b9d",
+        }}>
         <ToggleButton value="day" aria-label="left aligned">
           Today
         </ToggleButton>

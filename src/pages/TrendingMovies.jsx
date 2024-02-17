@@ -1,11 +1,17 @@
 import React from "react";
 import Trending from "../components/Trending";
+import SearchForm from "../components/SearchForm";
+import MovieTvTab from "../components/MovieTvTab";
 
 function TrendingMovie() {
   return (
-    <div className="container">
-      <Trending />
-    </div>
+    <>
+      <SearchForm />
+      <div className="container">
+        <MovieTvTab />
+        <Trending />
+      </div>
+    </>
   );
 }
 

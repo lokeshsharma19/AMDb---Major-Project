@@ -16,7 +16,7 @@
 body {
   font-family: "Inter", sans-serif;
   background-color: var(--dark-background-color);
-  color: var(--base-color);
+  color: var(--white-text-color);
 }
 
 .container {
