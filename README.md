@@ -1,6 +1,6 @@
 # [AMDb - Movies, tv shows & more](https://shimmering-croissant-f16dfa.netlify.app)
 
-
+## [Live Demo](https://shimmering-croissant-f16dfa.netlify.app)
 ## Description
 
 AMDb is your go-to source for information about movies, TV shows, and celebrities. Explore a vast database, discover details about your favorite entertainment, and stay up-to-date with the latest releases.
